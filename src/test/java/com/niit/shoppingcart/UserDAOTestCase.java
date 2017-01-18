@@ -28,9 +28,13 @@ public class UserDAOTestCase {
 	@BeforeClass  //we can write @BeforeClasses only for the static methods
 	public static void init()
 	{
+		
 		context = new  AnnotationConfigApplicationContext();
+		
 		context.scan("com.niit.shoppingcart");
+		
 		context.refresh();
+		
 		
 		user = (User) context.getBean("user");
 		
@@ -42,7 +46,7 @@ public class UserDAOTestCase {
 	public void getUserTestCase()
 	{
 		
-		user = userDAO.get("niit");
+		user = userDAO.get(1);
 		
 		
 		//Assert statements
@@ -54,7 +58,7 @@ public class UserDAOTestCase {
 	@Test
 	public void validateCredentials()
 	{
-	user=	userDAO.validate("niit", "niit");
+	user=	userDAO.validate(1234, "niit");
 	 Assert.assertNotNull("validateCredentials", user);
 	}
 	
@@ -62,7 +66,7 @@ public class UserDAOTestCase {
 	@Test
 	public void inValidateCredentials()
 	{
-	user=	userDAO.validate("Vibhav", "Vibhav");
+	user=	userDAO.validate(123, "Vibhav");
 	 Assert.assertNull("inValidateCredentials", user);
 	 
 	 //OR
@@ -89,11 +93,12 @@ public class UserDAOTestCase {
 		//you have create /insert new row in db
 		//provide values for user
 		
-		user.setId("Shiddharth");
-		user.setName("Sid");
-		user.setContact("989898989");
-		user.setMail("shiddharth28.com");
-		user.setPassword("");
+		user.setId(3);
+		user.setName("ishan");
+		user.setContact("720456989");
+		user.setEmail("ishan@gmail.com");
+		//user.setMail("ishan28.com");
+		user.setPassword("12345");
 		user.setRole("ROLE_USER");
 		
 		
@@ -107,9 +112,9 @@ public class UserDAOTestCase {
 	{
 		
 	
-		user = userDAO.get("Sai");
-		
-		user.setMail("Sai@yahoo.com");
+		user = userDAO.get(2);
+		user.setEmail("shidds@gmail.com");
+		//user.setmail("Sidds@yahoo.com");
 		
 	 Assert.assertEquals("updateTestCase", true, 	userDAO.update(user));
 		

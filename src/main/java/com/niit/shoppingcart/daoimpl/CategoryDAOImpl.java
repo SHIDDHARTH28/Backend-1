@@ -10,47 +10,42 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.niit.shoppingcart.dao.UserDAO;
+import com.niit.shoppingcart.dao.CategoryDAO;
+import com.niit.shoppingcart.model.Category;
 import com.niit.shoppingcart.model.User;
 
 @Repository
-public class UserDAOImpl implements UserDAO {
+public class CategoryDAOImpl implements CategoryDAO {
 
+	
 	@Autowired
 	private SessionFactory sessionFactory;
-	public UserDAOImpl(SessionFactory sessionFactory) {
+	public CategoryDAOImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 	@Transactional
-	public List<User> list() {
-		String hql = "from User";
+	public List<Category> list() {
+		String hql = "from Category";
 
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 
 		return query.list();
 	}
 
-	
 	@Transactional
-	public User get(int id) {
+	public Category get(String catid) {
 
-		return (User) sessionFactory.getCurrentSession().get(User.class, id);
+		return (Category) sessionFactory.getCurrentSession().get(Category.class, catid);
 
 	}
+	
+	
+
 
 	@Transactional
-	public User validate(int id, String password) {
-		String hql = "from User where id ='" + id + "'  and password='" + password + "'";
-
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-
-		return (User) query.uniqueResult();
-}
-
-	@Transactional
-	public boolean save(User user) {
+	public boolean save(Category category) {
 		try {
-			sessionFactory.getCurrentSession().save(user);
+			sessionFactory.getCurrentSession().save(category);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -60,9 +55,9 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Transactional
-	public boolean update(User user) {
+	public boolean update(Category category) {
 		try {
-			sessionFactory.getCurrentSession().update(user);
+			sessionFactory.getCurrentSession().update(category);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

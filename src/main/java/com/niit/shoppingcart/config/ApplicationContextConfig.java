@@ -10,11 +10,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.shoppingcart.dao.UserDAO;
+import com.niit.shoppingcart.daoimpl.UserDAOImpl;
+import com.niit.shoppingcart.model.Category;
+import com.niit.shoppingcart.model.Products;
 import com.niit.shoppingcart.model.User;
+
 
 @Configuration
 @ComponentScan("com.niit.shoppingcart")
@@ -24,15 +29,16 @@ public class ApplicationContextConfig {
 	
 	@Bean(name = "dataSource")
 	public DataSource getH2DataSource() {
+		
 
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 			
-		dataSource.setUrl("jdbc:h2:tcp://localhost/~/NIITDB");
-
+		dataSource.setUrl("jdbc:h2:tcp://localhost/~/shiddharth");
+		
 		dataSource.setDriverClassName("org.h2.Driver");
-
+		
 		dataSource.setUsername("sa");
-		dataSource.setPassword("sa");
+		dataSource.setPassword("");
 		
 		
 		return dataSource;
@@ -53,6 +59,9 @@ public class ApplicationContextConfig {
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 		sessionBuilder.addProperties(getHibernateProperties());
 		sessionBuilder.addAnnotatedClass(User.class);
+		sessionBuilder.addAnnotatedClass(Category.class);
+		
+		sessionBuilder.addAnnotatedClass(Products.class);
 
 
 		return sessionBuilder.buildSessionFactory();
