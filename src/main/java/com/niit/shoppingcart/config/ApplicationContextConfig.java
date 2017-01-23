@@ -94,8 +94,8 @@ System.out.println("database");
   	return new SupplierDAOImpl(sessionFactory);
   }
   @Autowired
-  @Bean(name = "producstDAO")
-  public ProductDAO getProductsDAO(SessionFactory sessionFactory) 
+  @Bean(name = "productDAO")
+  public ProductDAO getProductDAO(SessionFactory sessionFactory) 
 	{
 	  
 	  System.out.println("dao");

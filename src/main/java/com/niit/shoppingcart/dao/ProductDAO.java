@@ -8,10 +8,10 @@ public interface ProductDAO {
 
 	public List<Product> list();
 	public Product get(String pid);
-	 public boolean save(Product products);
-     public boolean update(Product products);
-     public boolean delete(Product products);
-	public boolean create(Product products);
+	 public boolean save(Product product);
+     public boolean update(Product product);
+     public boolean delete(Product product);
+	public boolean create(Product product);
 	
 	
 	

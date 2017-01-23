@@ -17,7 +17,7 @@ public class Product {
 
 	private String pid;
 	private String name;
-	private String price;
+	private int price;
 
 	private String catid;
 
@@ -25,6 +25,7 @@ public class Product {
 
 	
 	@Id
+	@Column(name = "pid")
 	public String getPid() {
 		return pid;
 	}
@@ -44,12 +45,12 @@ public class Product {
 
 
 	@Column(name = "PRICE")
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
-		this.price = price;
+	public void setPrice(int i) {
+		this.price = i;
 	}
 	
 	private  Category category;

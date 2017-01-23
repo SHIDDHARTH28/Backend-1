@@ -14,7 +14,7 @@ import com.niit.shoppingcart.dao.ProductDAO;
 import com.niit.shoppingcart.model.Product;
 
 
-@Repository("productsDAO")
+@Repository("productDAO")
 public class ProductDAOImpl implements ProductDAO {
 
 	
@@ -26,7 +26,7 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 	@Transactional
 	public List<Product> list() {
-		String hql = "from Products";
+		String hql = "from Product";
 
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 
@@ -40,10 +40,10 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 	
 	@Transactional
-	public boolean save(Product products) {
+	public boolean save(Product product) {
 		try {
 			System.out.println("e1");
-			sessionFactory.getCurrentSession().save(products);
+			sessionFactory.getCurrentSession().save(product);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -53,9 +53,9 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 	
 	@Transactional
-	public boolean update(Product products) {
+	public boolean update(Product product) {
 		try {
-			sessionFactory.getCurrentSession().update(products);
+			sessionFactory.getCurrentSession().update(product);
 		
 		
 		} catch (Exception e) {
@@ -65,9 +65,9 @@ public class ProductDAOImpl implements ProductDAO {
 		}
 		return true;
 	}
-	public boolean delete(Product products) {
+	public boolean delete(Product product) {
 		try{
-			sessionFactory.getCurrentSession().delete(products);
+			sessionFactory.getCurrentSession().delete(product);
 			
 			}
 catch (Exception e) {
@@ -77,9 +77,18 @@ catch (Exception e) {
 		}
 		return true;
 	}
-	public boolean create(Product products) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean create(Product product) {
+		try{
+			sessionFactory.getCurrentSession().delete(product);
+			
+			}
+catch (Exception e) {
+			
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 	}
 	
-}
+
