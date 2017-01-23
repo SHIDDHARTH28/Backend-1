@@ -11,5 +11,5 @@ public interface CategoryDAO {
 	public Category get(String catid);
 	 public boolean save(Category category);
      public boolean update(Category category);
-	
+     public boolean delete(Category category);
 }

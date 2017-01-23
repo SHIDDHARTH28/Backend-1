@@ -61,4 +61,15 @@ public class SupplierDAOImpl implements SupplierDAO {
 		return true;
 	}
 
+	public boolean delete(Supplier supplier) {
+		try {
+			sessionFactory.getCurrentSession().delete(supplier);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
 }

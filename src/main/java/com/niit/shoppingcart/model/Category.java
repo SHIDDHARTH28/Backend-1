@@ -1,5 +1,6 @@
 package com.niit.shoppingcart.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -7,7 +8,7 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table
+@Table(name="CATEGORY")
 @Component
 
 
@@ -15,9 +16,9 @@ public class Category {
 
 	@Id
 	private String catid;
-	
+	@Column(name="catname")
 	private String catname;
-	
+
 	private String catdesc;
 
 	public String getCatid() {

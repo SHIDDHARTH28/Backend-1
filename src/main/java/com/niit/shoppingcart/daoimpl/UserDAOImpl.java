@@ -70,6 +70,10 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return true;
 	}
+	public boolean delete(User user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 	
 

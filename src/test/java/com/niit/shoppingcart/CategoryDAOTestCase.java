@@ -1,68 +1,42 @@
 package com.niit.shoppingcart;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.niit.shoppingcart.dao.CategoryDAO;
-
 import com.niit.shoppingcart.model.Category;
-
-
-import junit.framework.Assert;
 
 public class CategoryDAOTestCase {
 
-
-	@Autowired
-	static CategoryDAO CategoryDAO;
 	
-	@Autowired
-	static Category  category;
-	
-	@Autowired
-	static AnnotationConfigApplicationContext context;
-	
-	
-	@BeforeClass  //we can write @BeforeClasses only for the static methods
-	public static void init()
-	{
+	public static void main(String[] args) {
 		
-		context = new  AnnotationConfigApplicationContext();
-		
-		context.scan("com.niit.shoppingcart");
-		
-		context.refresh();
-		
-		
-		category = (Category) context.getBean("category");
-		
-		CategoryDAO = (CategoryDAO) context.getBean("categoryDAOImpl");
+			
+			AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+			
+			context.scan("com.niit.shoppingcart");
+			context.refresh();
+				
+			
+		   CategoryDAO categoryDAO = (CategoryDAO) context.getBean("categoryDAO");
+		   
+		   Category category = 	(Category) context.getBean("category");
+		   
+		   category.setCatid("C002");
+		   category.setCatname("mobiles");
+		   category.setCatdesc("CGDesc120");
 		 
-	}
-	
-	@Test
-	public void saveTestCase()
-	{
+		   
+		   categoryDAO.save(category);
+		   
+		   
+		   System.out.println("er6");
+		   
+		   
+		   
 		
-		//you have create /insert new row in db
-		//provide values for category
-		
-	
-		category.setCatid("C001");
-		category.setCatname("Electronics");
-		category.setCatdesc("Mobiles");
-		
-		
-	 Assert.assertEquals("saveTestCase", true, 	CategoryDAO.save(category));
-		
-	}
-	
-	
-	
-	
-	
-	
-	
+			
+			
+			
+		}
+
 }
+

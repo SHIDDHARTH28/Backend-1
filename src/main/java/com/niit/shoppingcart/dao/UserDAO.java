@@ -12,6 +12,6 @@ import com.niit.shoppingcart.model.User;
 		              public User validate(int id, String password);
 		              public boolean save(User user);
 		              public boolean update(User user);
-		              
+		              public boolean delete(User user);
 		              
 	}
