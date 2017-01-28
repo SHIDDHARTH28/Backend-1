@@ -3,11 +3,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.niit</groupId>
-  <artifactId>ShoppingCartBackEnd</artifactId>
+  <artifactId>Backend-1</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
+  
 
-  <name>ShoppingCartBackEnd</name>
+  <name>BackEnd-1</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -87,6 +88,8 @@
 </dependency>
 		
 		
+		
+		
 		<dependency>
     <groupId>com.fasterxml.jackson.core</groupId>
     <artifactId>jackson-databind</artifactId>
@@ -126,6 +129,25 @@
     <artifactId>hibernate-validator</artifactId>
     <version>5.3.4.Final</version>
 </dependency>
+   
+   
+  
+  
+  
+  
+  <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  
+  
+  
+   
+   
+   
+   
    
 
 	</dependencies>
